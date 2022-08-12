@@ -1,0 +1,52 @@
+{
+    "name": "im-wmkong/laravel-model-filter",
+    "description": "Laravel Eloquent Models filter",
+    "keywords": [
+        "laravel",
+        "eloquent",
+        "model",
+        "filter",
+        "query"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "WmKong",
+            "email": "im.wmkong@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ModelFilter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ModelFilter\\Tests\\": "tests/",
+            "ModelFilter\\TestClass\\": "tests/classes/"
+        }
+    },
+    "require": {
+        "php": "^8.0",
+        "laravel/framework": "^9.24"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "mockery/mockery": "^1.5"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ModelFilter\\ServiceProvider"
+            ]
+        }
+    }
+}

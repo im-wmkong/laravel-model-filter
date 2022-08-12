@@ -1,0 +1,15 @@
+<?php 
+
+namespace {{namespace}};
+
+use ModelFilter\Filter;
+
+class {{class}} extends Filter
+{
+    /**
+     * The attributes that equal query is used by default.
+     *
+     * @var array
+     */
+    public $filtrable = [];
+}
