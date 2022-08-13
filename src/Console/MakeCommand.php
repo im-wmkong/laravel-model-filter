@@ -1,26 +1,26 @@
 <?php
 
-namespace ModelFilter\Commands;
+namespace ModelFilter\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
-class MakeModelFilter extends Command
+class MakeCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'model:filter {name}';
+    protected $signature = 'make:filter {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create A New Eloquent Model Filter';
+    protected $description = 'Create A Eloquent Model Filter';
 
     /**
      * Class to create.
@@ -121,7 +121,7 @@ class MakeModelFilter extends Command
     public function makeClassName()
     {
         $parts = array_map([Str::class, 'studly'], explode('\\', $this->argument('name')));
-        $className = config('modelfilter.namespace', 'App\\Models\\Filters\\').implode('\\', $parts);
+        $className = config('modelfilter.namespace', 'App\\Filters\\').implode('\\', $parts);
 
         if (!Str::endsWith($className, 'Filter')) {
             $className .= 'Filter';

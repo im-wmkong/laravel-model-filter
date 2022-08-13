@@ -1,6 +1,6 @@
 <?php
 
-namespace EloquentFilter;
+namespace ModelFilter\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 
@@ -22,7 +22,7 @@ trait Filterable
      */
     public function provideFilter()
     {
-        return config('modelfilter.namespace', 'App\\Models\\Filters\\') . class_basename($this) . 'Filter';
+        return config('modelfilter.namespace', 'App\\Filters\\') . class_basename($this) . 'Filter';
     }
 
     /**

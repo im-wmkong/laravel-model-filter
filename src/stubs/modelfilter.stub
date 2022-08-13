@@ -11,5 +11,5 @@ class {{class}} extends Filter
      *
      * @var array
      */
-    public $filtrable = [];
+    public $filterable = [];
 }

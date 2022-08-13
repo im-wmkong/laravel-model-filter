@@ -4,7 +4,7 @@ return [
     /**
      * The namespace for Eloquent Model Filters
      */
-    'namespace' => 'App\\Models\\Filters\\',
+    'namespace' => 'App\\Filters\\',
 
     /**
      * Convert input key to camel case

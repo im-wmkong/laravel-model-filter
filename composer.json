@@ -22,7 +22,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ModelFilter\\Tests\\": "tests/"
+            "Tests\\": "tests/"
         }
     },
     "require": {
@@ -32,22 +32,32 @@
     "require-dev": {
         "phpunit/phpunit": "^9.5",
         "mockery/mockery": "^1.5",
-        "friendsofphp/php-cs-fixer": "^3.9"
+        "friendsofphp/php-cs-fixer": "^3.9",
+        "orchestra/testbench": "^7.6",
+        "pestphp/pest": "^1.21"
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "scripts": {
         "check-style": "php-cs-fixer fix --using-cache=no --diff --dry-run --ansi",
         "fix-style": "php-cs-fixer fix --using-cache=no --ansi",
-        "test": "vendor/bin/phpunit --colors=always"
+        "test": "vendor/bin/pest"
+    },
+    "scripts-descriptions": {
+        "test": "Run all tests.",
+        "check-style": "Run style checks (only dry run - no fixing!).",
+        "fix-style": "Run style checks and fix violations."
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
         "laravel": {
             "providers": [
-                "ModelFilter\\ServiceProvider"
+                "ModelFilterServiceProvider"
             ]
         },
         "hooks": {

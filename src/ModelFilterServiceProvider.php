@@ -2,10 +2,10 @@
 
 namespace ModelFilter;
 
-use ModelFilter\Commands\MakeModelFilter;
+use ModelFilter\Console\MakeCommand;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
-class ServiceProvider extends LaravelServiceProvider
+class ModelFilterServiceProvider extends LaravelServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -28,6 +28,6 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function register()
     {
-        $this->commands(MakeModelFilter::class);
+        $this->commands(MakeCommand::class);
     }
 }
