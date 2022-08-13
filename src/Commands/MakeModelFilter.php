@@ -71,7 +71,7 @@ class MakeModelFilter extends Command
 
         $stubPath = __DIR__ .'/../stubs/modelfilter.stub';
 
-        if (! $this->files->exists($stubPath) || ! is_readable($stubPath)) {
+        if (!$this->files->exists($stubPath) || !is_readable($stubPath)) {
             $this->error("File [$stubPath] does not exist or is unreadable!");
             exit;
         }
@@ -113,7 +113,7 @@ class MakeModelFilter extends Command
 
     protected function makeDirectory($path)
     {
-        if (! $this->files->isDirectory(dirname($path))) {
+        if (!$this->files->isDirectory(dirname($path))) {
             $this->files->makeDirectory(dirname($path), 0777, true, true);
         }
     }
@@ -123,7 +123,7 @@ class MakeModelFilter extends Command
         $parts = array_map([Str::class, 'studly'], explode('\\', $this->argument('name')));
         $className = config('modelfilter.namespace', 'App\\Models\\Filters\\').implode('\\', $parts);
 
-        if (! Str::endsWith($className, 'Filter')) {
+        if (!Str::endsWith($className, 'Filter')) {
             $className .= 'Filter';
         }
 

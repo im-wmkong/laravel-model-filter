@@ -2,7 +2,9 @@
 
 namespace ModelFilter\Tests;
 
+use Illuminate\Foundation\Application;
 use Mockery;
+use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Testing\TestCase;
 use Illuminate\Filesystem\Filesystem;
 use ModelFilter\ServiceProvider;
@@ -13,9 +15,9 @@ class MakeModelFilterCommandTest extends TestCase
 
     public function createApplication()
     {
-        $app = require __DIR__.'/../vendor/laravel/laravel/bootstrap/app.php';
+        $app = new Application(dirname(__DIR__));
 
-        $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+        $app->make(Kernel::class)->bootstrap();
 
         $app->register(ServiceProvider::class);
 

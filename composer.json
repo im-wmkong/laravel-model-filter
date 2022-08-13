@@ -22,8 +22,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ModelFilter\\Tests\\": "tests/",
-            "ModelFilter\\TestClass\\": "tests/classes/"
+            "ModelFilter\\Tests\\": "tests/"
         }
     },
     "require": {
@@ -32,13 +31,16 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
-        "mockery/mockery": "^1.5"
+        "mockery/mockery": "^1.5",
+        "friendsofphp/php-cs-fixer": "^3.9"
     },
     "config": {
         "preferred-install": "dist"
     },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "check-style": "php-cs-fixer fix --using-cache=no --diff --dry-run --ansi",
+        "fix-style": "php-cs-fixer fix --using-cache=no --ansi",
+        "test": "vendor/bin/phpunit --colors=always"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -46,6 +48,14 @@
         "laravel": {
             "providers": [
                 "ModelFilter\\ServiceProvider"
+            ]
+        },
+        "hooks": {
+            "pre-commit": [
+                "composer fix-style"
+            ],
+            "pre-push": [
+                "composer test"
             ]
         }
     }
