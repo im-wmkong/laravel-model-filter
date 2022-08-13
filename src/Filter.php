@@ -76,7 +76,7 @@ abstract class Filter
 
     public function isCallable(string $method)
     {
-        return method_exists($this, $method) && !method_exists(ModelFilter::class, $method);
+        return method_exists($this, $method) && !method_exists(Filter::class, $method);
     }
 
     public function getFilterMethod($key)
