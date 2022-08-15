@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait Filterable
 {
+    /**
+     * add filter method for query builder
+     *
+     * @param Builder $query
+     * @param array $input
+     * @return void
+     */
     public function scopeFilter(Builder $query, array $input = [])
     {
         $filterClass = $this->getModelFilterClass();
@@ -22,7 +29,7 @@ trait Filterable
      */
     public function provideFilter()
     {
-        return config('modelfilter.namespace', 'App\\Filters\\') . class_basename($this) . 'Filter';
+        return config('modelfilter.namespace', 'App\\Filters') . '\\' . class_basename($this) . 'Filter';
     }
 
     /**

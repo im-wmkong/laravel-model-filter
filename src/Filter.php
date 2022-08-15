@@ -18,6 +18,11 @@ abstract class Filter
     public $filterable = [];
 
     /**
+     * @var QueryBuilder
+     */
+    protected $query;
+
+    /**
      * Array of input to filter.
      *
      * @var array
@@ -25,29 +30,32 @@ abstract class Filter
     protected $input;
 
     /**
-     * @var QueryBuilder
-     */
-    protected $query;
-
-    /**
      * ModelFilter constructor.
      *
      * @param QueryBuilder $query
      * @param array $input
      */
-    public function __construct($query, array $input = [])
+    public function __construct(QueryBuilder $query, array $input = [])
     {
         $this->query = $query;
         $this->input = array_filter($input);
     }
 
+    /**
+     * Execute the model filter.
+     *
+     * @return void
+     */
     public function handle()
     {
         foreach ($this->input as $key => $value) {
             $method = $this->getFilterMethod($key);
             if ($this->isCallable($method)) {
                 $this->{$method}($value);
-            } elseif ($this->isFilterable($key)) {
+                continue;
+            }
+
+            if ($this->isFilterable($key)) {
                 if (is_array($value)) {
                     $this->query->whereIn($key, $value);
                 } else {
@@ -69,16 +77,34 @@ abstract class Filter
         return $rst instanceof QueryBuilder ? $this : $rst;
     }
 
+    /**
+     * This key is filterable
+     *
+     * @param string $key
+     * @return boolean
+     */
     public function isFilterable(string $key)
     {
         return in_array($key, $this->filterable);
     }
 
+    /**
+     * This method is callable
+     *
+     * @param string $method
+     * @return boolean
+     */
     public function isCallable(string $method)
     {
         return method_exists($this, $method) && !method_exists(Filter::class, $method);
     }
 
+    /**
+     * Get the filter method for the filter class.
+     *
+     * @param string $key
+     * @return string
+     */
     public function getFilterMethod($key)
     {
         $method = str_replace('.', '', $key);
