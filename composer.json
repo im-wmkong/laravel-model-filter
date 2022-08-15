@@ -57,7 +57,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ModelFilterServiceProvider"
+                "ModelFilter\\ModelFilterServiceProvider"
             ]
         },
         "hooks": {
