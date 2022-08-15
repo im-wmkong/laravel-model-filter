@@ -4,11 +4,12 @@ namespace ModelFilter;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Illuminate\Support\Str;
+use ModelFilter\Contracts\Filter as FilterContracts;
 
 /**
  * @mixin QueryBuilder
  */
-abstract class Filter
+abstract class Filter implements FilterContracts
 {
     /**
      * The attributes that equal query is used by default.

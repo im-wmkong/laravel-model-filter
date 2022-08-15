@@ -3,6 +3,7 @@
 namespace ModelFilter\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
+use ModelFilter\Contracts\Filter as FilterContracts;
 
 trait Filterable
 {
@@ -17,7 +18,15 @@ trait Filterable
     {
         $filterClass = $this->getModelFilterClass();
 
+        if (!class_exists($filterClass)) {
+            return;
+        }
+
         $modelFilter = new $filterClass($query, $input);
+
+        if (!($modelFilter instanceof FilterContracts)) {
+            return;
+        }
 
         $modelFilter->handle();
     }
