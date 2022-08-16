@@ -49,7 +49,7 @@ class MakeCommand extends GeneratorCommand
      */
     protected function getNameInput()
     {
-        $name = parent::getNameInput();
+        $name = Str::studly(parent::getNameInput());
 
         return Str::endsWith($name, 'Filter') ? $name : $name . 'Filter';
     }
@@ -64,10 +64,6 @@ class MakeCommand extends GeneratorCommand
     {
         $configNamespace = config('modelfilter.namespace', 'App\\Filters');
 
-        if (Str::startsWith($configNamespace, $rootNamespace)) {
-            return $configNamespace;
-        }
-
-        return $rootNamespace . '\\' . $configNamespace;
+        return Str::startsWith($configNamespace, $rootNamespace) ? $configNamespace : $rootNamespace .'\\'. $configNamespace;
     }
 }

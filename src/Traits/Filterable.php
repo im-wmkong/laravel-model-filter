@@ -38,7 +38,7 @@ trait Filterable
      */
     public function provideFilter()
     {
-        return config('modelfilter.namespace', 'App\\Filters') . '\\' . class_basename($this) . 'Filter';
+        return config('modelfilter.namespace', 'App\\Filters') .'\\'. class_basename($this) .'Filter';
     }
 
     /**
