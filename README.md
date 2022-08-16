@@ -189,7 +189,6 @@ class UserFilter extends Filter
      */
     public $filterable = [
         'name',
-        'age',
         'roles'
     ];
     
