@@ -123,7 +123,7 @@ Create a public method `modelFilter()` that returns `Your\Model\Filter::class;` 
 
 namespace App\Models;
 
-use ModelFilter\Filterable;
+use ModelFilter\Traits\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
@@ -178,7 +178,7 @@ You would use the following methods:
 
 namespace App\Filters;
 
-use ModelFilte\Filter;
+use ModelFilter\Filter;
 
 class UserFilter extends Filter
 {
@@ -206,14 +206,14 @@ class UserFilter extends Filter
 
 ### Applying The Filter To A Model
 
-Implement the `EloquentFilter\Filterable` trait on any Eloquent model:
+Implement the `ModelFilter\Traits\Filterable` trait on any Eloquent model:
 
 ```php
 <?php
 
 namespace App\Models;
 
-use ModelFilter\Filterable;
+use ModelFilter\Traits\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
