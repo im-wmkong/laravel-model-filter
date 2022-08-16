@@ -245,3 +245,7 @@ class UserController extends Controller
 
 # Contributing
 Any contributions welcome!
+
+# Thanks
+- [Tucker-Eric/EloquentFilter](https://github.com/Tucker-Eric/EloquentFilter)
+- [overtrue/laravel-skeleton](https://github.com/overtrue/laravel-skeleton)
