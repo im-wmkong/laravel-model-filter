@@ -3,7 +3,7 @@
 A Laravel Eloquent Models filter way
 
 ## Introduction
-Lets say we want to return a list of users filtered by multiple parameters. When we see to:
+Let say we want to return a list of users filtered by multiple parameters. When we see to:
 
 `/users?name=wmkong&age=&client=ios&roles[]=1&roles[]=4&roles[]=7`
 
@@ -140,7 +140,7 @@ class User extends Model
 ```
 
 ### Generating The Filter
-> Only available if you have registered `ModelFilter\ModelFilterServiceProvider::class` in the providers array in your `config/app.php'
+> Only available if you have registered `ModelFilter\ModelFilterServiceProvider::class` in the providers array in your `config/app.php`
 
 You can create a model filter with the following artisan command:
 
