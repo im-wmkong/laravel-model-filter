@@ -42,9 +42,6 @@ class UserController extends Controller
             ->when($request->has('mobile_phone'), function ($query) use ($request) {
                 return $query->where('mobile_phone', 'like', "%{$request->get('mobile_phone')}%");
             })
-            ->when($request->has('client'), function ($query) use ($request) {
-                return $query->where('client', $request->get('client'));
-            })
             ->when($request->has('roles'), function ($query) use ($request) {
                 return $query->whereIn('roles', $request->get('roles'));
             })
