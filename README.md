@@ -32,7 +32,8 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        return User::when($request->has('name'), function ($query) use ($request) {
+        return User::query()
+            ->when($request->has('name'), function ($query) use ($request) {
                 return $query->where('name', $request->get('name'));
             })
             ->when($request->has('age'), function ($query) use ($request) {
