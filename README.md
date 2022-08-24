@@ -50,7 +50,7 @@ class UserController extends Controller
 }
 ```
 
-To filter that same input With Eloquent Filters:
+To filter that same input with model filter:
 
 ```php
 <?php
